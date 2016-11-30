@@ -22,6 +22,7 @@ public class RegisterTests extends ChromeKrabTest {
         helper.waitByIdAndType("ConfirmPassword", password);
         helper.clickByXpath("//*[@id=\"Register\"]/form/div[5]/div/button");
         helper.waitByXpath("/html/body/div[1]/div[1]/h3");
+        Thread.sleep(3000);
         assertTrue(helper.elementExistsByXpath("/html/body/div[1]/div[1]/h3"));
     }
 
@@ -37,6 +38,7 @@ public class RegisterTests extends ChromeKrabTest {
         helper.waitByIdAndType("ConfirmPassword", password);
         helper.clickByXpath("//*[@id=\"Register\"]/form/div[5]/div/button");
         helper.waitByXpath("//*[@id=\"Register\"]/form/div[1]/ul/li");
+        Thread.sleep(3000);
         assertTrue(helper.getTextInElementByXpath("//*[@id=\"Register\"]/form/div[1]/ul/li").equals("The Email field is not a valid e-mail address."));
     }
 
@@ -49,6 +51,7 @@ public class RegisterTests extends ChromeKrabTest {
         helper.waitByIdAndType("ConfirmPassword", password);
         helper.clickByXpath("//*[@id=\"Register\"]/form/div[5]/div/button");
         helper.waitByXpath("//*[@id=\"Register\"]/form/div[1]/ul/li");
+        Thread.sleep(3000);
         assertTrue(helper.getTextInElementByXpath("//*[@id=\"Register\"]/form/div[1]/ul/li").equals("The Email field is required."));
     }
 
