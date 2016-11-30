@@ -14,9 +14,11 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by qazimusab on 08/09/16.
  */
+@SuppressWarnings("unused")
 public class Helper {
 
     private WebDriver driver;
+    private static int DEFAULT_WAIT_TIME = 15;
 
     public Helper(WebDriver driver) {
         this.driver = driver;
@@ -27,12 +29,12 @@ public class Helper {
     }
 
     public void waitById(String id) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
     }
 
     public void waitByIdAndClick(String id) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id))).click();
     }
 
@@ -49,7 +51,7 @@ public class Helper {
     }
 
     public void waitByIdAndType(String id, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id))).sendKeys(text);
     }
 
@@ -63,17 +65,17 @@ public class Helper {
     }
 
     public void waitByName(String name) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(name)));
     }
 
     public void waitByNameAndClick(String name) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(name))).click();
     }
 
     public void waitByNameAndType(String name, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(name))).sendKeys(text);
     }
 
@@ -87,12 +89,12 @@ public class Helper {
     }
 
     public void waitByClassName(String className) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(className)));
     }
 
     public void waitByClassNameAndClick(String className) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(className))).click();
     }
 
@@ -106,12 +108,12 @@ public class Helper {
     }
 
     public void waitByLinkText(String linkText) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(linkText)));
     }
 
     public void waitByLinkTextAndClick(String linkText) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(linkText))).click();
     }
 
@@ -125,17 +127,17 @@ public class Helper {
     }
 
     public void waitByXpath(String xpath) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     public void waitByXpathAndClick(String xpath) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
     }
 
     public void waitByXpathAndType(String xpath, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(text);
     }
 
@@ -157,12 +159,12 @@ public class Helper {
     }
 
     public void waitUntilClickableByXpathAndClick(String xpath) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
     }
 
     public void waitByCssSelector(String cssSelector) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(cssSelector)));
     }
 
@@ -172,7 +174,7 @@ public class Helper {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText(linkText))).click();
     }
 
@@ -187,7 +189,7 @@ public class Helper {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
     }
 
@@ -234,8 +236,7 @@ public class Helper {
 
     public String getRandomEmailAddress() {
         UUID randomUUID = UUID.randomUUID();
-        String randomEmail = randomUUID.toString() + "@gmail.com";
-        return randomEmail;
+        return randomUUID.toString() + "@gmail.com";
     }
 
     public String getRandomString() {
@@ -244,13 +245,13 @@ public class Helper {
 
     public int getNumberOfChildElementsByXpath(String xpath) {
         WebElement rootWebElement = driver.findElement(By.xpath(xpath));
-        List<WebElement> childs = rootWebElement.findElements(By.xpath(".//*"));
-        return childs.size();
+        List<WebElement> children = rootWebElement.findElements(By.xpath(".//*"));
+        return children.size();
     }
 
     public int getNumberOfChildElementsByClassName(String className) {
         WebElement rootWebElement = driver.findElement(By.className(className));
-        List<WebElement> childs = rootWebElement.findElements(By.xpath(".//*"));
-        return childs.size();
+        List<WebElement> children = rootWebElement.findElements(By.xpath(".//*"));
+        return children.size();
     }
 }
